@@ -9,7 +9,7 @@ import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
 import WorkExperience from "../components/WorkExperience";
-import { ArrowUpIcon } from "@heroicons/react/24/solid";
+import { ArrowUpCircleIcon } from "@heroicons/react/24/solid";
 const Home: NextPage = () => {
   return (
     <div className="bg-[rgb(36,36,36)] h-screen text-white snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#0adff7]/80">
@@ -44,7 +44,7 @@ const Home: NextPage = () => {
       <Link href={"#hero"}>
         <footer className="sticky bottom-5 cursor-pointer w-full">
           <div className="flex items-center justify-end p-10">
-            <ArrowUpIcon className="h-8 w-8 border" />
+            <ArrowUpCircleIcon className="h-12 w-12 border rounded-full border-[#0adff7]/50 text-[#0adff7]/50 grayscale hover:grayscale-0" />
           </div>
         </footer>
       </Link>
