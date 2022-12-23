@@ -23,7 +23,7 @@ function Projects({}: Props) {
       </h3>
       <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar-track-gray-400/20 scrollbar-thumb-[#0adff7]/80 scrollbar-thin">
         {projects.map((project, i) => (
-          <div className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen">
+          <div className="w-screen flex-shrink-0 snap-center flex flex-col space-y-3 md:space-y-5 items-center justify-center px-16 pt-16 pb-4 md:p-44 h-screen">
             <motion.img
               initial={{
                 y: -300,
@@ -41,16 +41,16 @@ function Projects({}: Props) {
               }}
               src="/project.png"
               alt=""
-              className="h-[300px] w-[500px]"
+              className="h-52 w-72 md:h-[300px] md:w-[500px]"
             />
             <div className="space-y-10 px-0 md:px-10 max-w-6xl">
-              <h4 className="text-4xl font-semibold text-center">
+              <h4 className="text-2xl md:text-4xl font-semibold text-center">
                 <span className="underline decoration-[#0adff7]/50">
                   Case Study {i + 1} of {projects.length}
                 </span>{" "}
                 :FB clone
               </h4>
-              <p className="text-lg text-center md:text-left">
+              <p className="text-base md:text-lg text-center md:text-left">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Blanditiis corrupti deserunt soluta minus praesentium vel,
                 maxime pariatur odio! Unde saepe illo eaque eligendi minus nobis

@@ -20,53 +20,53 @@ function ContactMe({}: Props) {
         Contact
       </h3>
       <div className="flex flex-col space-y-5 mt-12">
-        <h4 className="text-4xl font-semibold text-center">
+        <h4 className="text-4xl  font-semibold text-center px-4">
           I have just what you need.{" "}
           <span className="underline decoration-[#0adff7]/50">Let's Talk.</span>
         </h4>
         <div className="space-y-3">
           <div className="flex items-center space-x-5 justify-center">
             <PhoneIcon className="text-[#0adff7] h-7 w-7 animate-pulse" />
-            <p className="text-2xl">+123456789</p>
+            <p className="text-xl md:text-2xl">+123456789</p>
           </div>
           <div className="flex items-center space-x-5 justify-center">
             <EnvelopeIcon className="text-[#0adff7] h-7 w-7 animate-pulse" />
-            <p className="text-2xl">praful.bansalncs@gmail.com</p>
+            <p className="text-xl md:text-2xl">praful.bansalncs@gmail.com</p>
           </div>
           <div className="flex items-center space-x-5 justify-center">
             <MapIcon className="text-[#0adff7] h-7 w-7 animate-pulse" />
-            <p className="text-2xl">123 Dev Lane</p>
+            <p className="text-xl md:text-2xl">123 Dev Lane</p>
           </div>
         </div>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col space-y-2 w-fit mx-auto"
+          className="flex flex-col space-y-2 md:w-fit mx-auto"
         >
           <div className="flex space-x-2">
             <input
               {...register("name")}
               placeholder="Name"
-              className="contactInput"
+              className="contactInput w-40 md:w-80"
               type="text"
             />
             <input
               {...register("email")}
               placeholder="Email"
-              className="contactInput"
+              className="contactInput w-40 md:w-80"
               type="email"
             />
           </div>
           <input
             {...register("subject")}
             placeholder="Subject"
-            className="contactInput"
+            className="contactInput w-[328px] md:w-[648px]"
             type="text"
           />
           <textarea
             {...register("message")}
             placeholder="Message"
-            className="contactInput"
+            className="contactInput w-[328px] md:w-[648px]"
           />
           <button
             type="submit"

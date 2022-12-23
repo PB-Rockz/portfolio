@@ -23,7 +23,7 @@ function Skills({}: Props) {
       <h3 className="absolute top-32 uppercase tracking-[3px] text-gray-500 text-sm">
         Hover over skill for current profieciency
       </h3>
-      <div className="absolute top-48 grid grid-cols-4 gap-5 ">
+      <div className="absolute top-48 grid grid-cols-4 gap-[11px] md:gap-5 ">
         <Skill />
         <Skill />
         <Skill />
