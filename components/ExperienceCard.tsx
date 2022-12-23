@@ -6,7 +6,7 @@ type Props = {};
 
 function ExperienceCard({}: Props) {
   return (
-    <article className="flex flex-col rounded-xl items-center space-y-7 flex-shrink-0 w-[500px] md:w-[800px] lg:w-[950px] snap-center bg-[#292929] px-5 py-3 mt-5 hover:opacity-100 opacity-40 transition-opacity duration-200 overflow-hidden">
+    <article className="flex flex-col rounded-xl items-center space-y-7 flex-shrink-0 w-[500px] md:w-[800px] lg:w-[950px] snap-center bg-[#292929] px-5 py-3  hover:opacity-100 opacity-40 transition-opacity duration-200 overflow-hidden">
       <motion.div
         initial={{
           y: -100,
@@ -56,7 +56,7 @@ function ExperienceCard({}: Props) {
         <p className="uppercase text-gray-300 py-3">
           Strated work- ... Ended work- ...
         </p>
-        <ul className="list-disc space-y-1 ml-5 text-lg ">
+        <ul className="list-disc space-y-1 ml-5 text-base ">
           <li>Summary Points</li>
           <li>Summary Points</li>
           <li>Summary Points</li>
