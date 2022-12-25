@@ -46,7 +46,7 @@ function ExperienceCard({ experience }: Props) {
         </div>
         <p className="uppercase text-gray-300 py-3">
           <>
-            {new Date(experience.dateStarted).toDateString()} -{" "}
+            {new Date(experience.dateStarted).toDateString()} -{"  "}
             {experience.isCurrentlyWorkingHere
               ? "Present"
               : new Date(experience.dateEnded).toDateString}
