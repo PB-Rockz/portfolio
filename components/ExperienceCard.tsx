@@ -45,10 +45,12 @@ function ExperienceCard({ experience }: Props) {
           {/* tech used */}
         </div>
         <p className="uppercase text-gray-300 py-3">
-          {new Date(experience.dateStarted).toDateString()} -{" "}
-          {experience.isCurrentlyWorkingHere
-            ? "Present"
-            : new Date(experience.dateEnded).toDateString}
+          <>
+            {new Date(experience.dateStarted).toDateString()} -{" "}
+            {experience.isCurrentlyWorkingHere
+              ? "Present"
+              : new Date(experience.dateEnded).toDateString}
+          </>
         </p>
         <ul className="list-disc space-y-1 ml-5 text-base ">
           {experience.points.map((point, i) => (
