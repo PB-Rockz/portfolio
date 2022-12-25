@@ -1,10 +1,13 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
-type Props = {};
+import { Project } from "../typings";
+import { urlFor } from "../sanity";
+type Props = {
+  projects: Project[];
+};
 
-function Projects({}: Props) {
-  const projects = [1, 2, 3, 4, 5];
+function Projects({ projects }: Props) {
   return (
     <motion.div
       initial={{
@@ -22,9 +25,9 @@ function Projects({}: Props) {
         Projects
       </h3>
       <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar-track-gray-400/20 scrollbar-thumb-[#0adff7]/80 scrollbar-thin">
-        {projects.map((project, i) => (
+        {projects?.map((project, i) => (
           <div className="w-screen flex-shrink-0 snap-center flex flex-col space-y-3 md:space-y-5 items-center justify-center px-16 pt-16 pb-4 md:p-44 h-screen">
-            <motion.img
+            <motion.div
               initial={{
                 y: -300,
                 opacity: 1,
@@ -39,29 +42,39 @@ function Projects({}: Props) {
               viewport={{
                 once: true,
               }}
-              src="/project.png"
-              alt=""
-              className="h-52 w-72 md:h-[300px] md:w-[500px]"
-            />
+            >
+              <Image
+                width={500}
+                height={300}
+                src={urlFor(project.image).url()}
+                alt=""
+                className="h-52 w-72 md:h-[300px] md:w-[500px] mt-4"
+              />
+            </motion.div>
             <div className="space-y-10 px-0 md:px-10 max-w-6xl">
               <h4 className="text-2xl md:text-4xl font-semibold text-center">
                 <span className="underline decoration-[#0adff7]/50">
-                  Case Study {i + 1} of {projects.length}
+                  Case Study {i + 1} of {projects.length}:
                 </span>{" "}
-                :FB clone
+                {project?.title}
               </h4>
+              <div className="flex items-center space-x-4 justify-center">
+                {project?.technologies.map((tech) => (
+                  <Image
+                    height={40}
+                    width={40}
+                    src={urlFor(tech.image).url()}
+                    className="h-10"
+                    alt="tech used"
+                  />
+                ))}
+              </div>
               <p className="text-base md:text-lg text-center md:text-left">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Blanditiis corrupti deserunt soluta minus praesentium vel,
-                maxime pariatur odio! Unde saepe illo eaque eligendi minus nobis
-                placeat voluptas corrupti est quia!
+                {project?.summary}
               </p>
             </div>
           </div>
         ))}
-        {/* project */}
-        {/* project */}
-        {/* project */}
       </div>
       <div className="w-full absolute top-[30%] bg-[#0ADFF7]/10 left-0 h-[400px] -skew-y-12" />
     </motion.div>

@@ -1,10 +1,12 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
+import { Experience } from "../typings";
+import { urlFor } from "../sanity";
 
-type Props = {};
+type Props = { experience: Experience };
 
-function ExperienceCard({}: Props) {
+function ExperienceCard({ experience }: Props) {
   return (
     <article className="flex flex-col rounded-xl items-center space-y-7 flex-shrink-0 w-[500px] md:w-[800px] lg:w-[950px] snap-center bg-[#292929] px-5 py-3  hover:opacity-100 opacity-40 transition-opacity duration-200 overflow-hidden">
       <motion.div
@@ -17,7 +19,7 @@ function ExperienceCard({}: Props) {
         viewport={{ once: true }}
       >
         <Image
-          src={"/about.jpeg"}
+          src={urlFor(experience?.companyImage).url()}
           height={200}
           width={200}
           alt={"ExpCard"}
@@ -28,40 +30,30 @@ function ExperienceCard({}: Props) {
         <h4 className="text-4xl font-light">CEO of IDK Limited</h4>
         <p className="font-bold mt-1 text-2xl">IDK Limited</p>
         <div className="flex space-x-2 my-2">
-          <Image
-            src={"/about.jpeg"}
-            height={40}
-            width={40}
-            alt={"TechStack"}
-            className="rounded-full object-contain"
-          />
-          <Image
-            src={"/about.jpeg"}
-            height={40}
-            width={40}
-            alt={"TechStack"}
-            className="rounded-full object-contain"
-          />
-          <Image
-            src={"/about.jpeg"}
-            height={40}
-            width={40}
-            alt={"TechStack"}
-            className="rounded-full object-contain"
-          />
+          {experience.technologies.map((technology) => (
+            <Image
+              key={technology._id}
+              src={urlFor(technology.image).url()}
+              height={40}
+              width={40}
+              alt={"TechStack"}
+              className="rounded-full object-contain"
+            />
+          ))}
           {/* tech used */}
           {/* tech used */}
           {/* tech used */}
         </div>
         <p className="uppercase text-gray-300 py-3">
-          Strated work- ... Ended work- ...
+          {new Date(experience.dateStarted).toDateString()} -{" "}
+          {experience.isCurrentlyWorkingHere
+            ? "Present"
+            : new Date(experience.dateEnded).toDateString}
         </p>
         <ul className="list-disc space-y-1 ml-5 text-base ">
-          <li>Summary Points</li>
-          <li>Summary Points</li>
-          <li>Summary Points</li>
-          <li>Summary Points</li>
-          <li>Summary Points</li>
+          {experience.points.map((point, i) => (
+            <li key={i}>{point}</li>
+          ))}
         </ul>
       </div>
     </article>

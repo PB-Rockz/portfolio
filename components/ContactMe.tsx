@@ -1,15 +1,18 @@
 import React from "react";
 import { PhoneIcon, MapIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { PageInfo } from "../typings";
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 type Inputs = {
   name: string;
   email: string;
   subject: string;
   message: string;
 };
-function ContactMe({}: Props) {
+function ContactMe({ pageInfo }: Props) {
   const { register, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (formData) => {
     window.location.href = `mailto:praful.bansalncs@gmail.com?subject=${formData.subject}&body=Hi, my name is ${formData.name}. ${formData.message}`;
@@ -27,15 +30,15 @@ function ContactMe({}: Props) {
         <div className="space-y-3">
           <div className="flex items-center space-x-5 justify-center">
             <PhoneIcon className="text-[#0adff7] h-7 w-7 animate-pulse" />
-            <p className="text-xl md:text-2xl">+123456789</p>
+            <p className="text-xl md:text-2xl">{pageInfo?.phoneNumber}</p>
           </div>
           <div className="flex items-center space-x-5 justify-center">
             <EnvelopeIcon className="text-[#0adff7] h-7 w-7 animate-pulse" />
-            <p className="text-xl md:text-2xl">praful.bansalncs@gmail.com</p>
+            <p className="text-xl md:text-2xl">{pageInfo?.email}</p>
           </div>
           <div className="flex items-center space-x-5 justify-center">
             <MapIcon className="text-[#0adff7] h-7 w-7 animate-pulse" />
-            <p className="text-xl md:text-2xl">123 Dev Lane</p>
+            <p className="text-xl md:text-2xl">{pageInfo.address}</p>
           </div>
         </div>
 

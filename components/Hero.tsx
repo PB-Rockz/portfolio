@@ -2,15 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
+import { urlFor } from "../sanity";
+import { PageInfo } from "../typings";
 import BackgroundCircles from "./BackgroundCircles";
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-function Hero({}: Props) {
+function Hero({ pageInfo }: Props) {
   const [light, setLight] = useState(false);
   const [text, count] = useTypewriter({
     words: [
-      "Hi, The name's Praful",
+      `Hi, The name's ${pageInfo?.name}`,
       "Guy-who-loves-coding.tsx",
       "<ButLovesTechMore/>",
     ],
@@ -30,24 +34,26 @@ function Hero({}: Props) {
       <BackgroundCircles />
       {light && (
         <Image
-          src="/helmet-light.png"
+          src={urlFor(pageInfo?.heroImageL).url()}
           className="rounded-full h-40 w-40 relative mx-auto object-cover"
           height={200}
           width={200}
           alt="ProfilePic"
           onMouseEnter={changeImage}
           onMouseLeave={revertImage}
+          priority={true}
         />
       )}
       {!light && (
         <Image
-          src="/helmet-dark.png"
+          src={urlFor(pageInfo?.heroImageD).url()}
           className="rounded-full h-40 w-40 relative mx-auto object-cover"
           height={200}
           width={200}
           alt="ProfilePic"
           onMouseEnter={changeImage}
           onMouseLeave={revertImage}
+          priority={true}
         />
       )}
 
@@ -58,7 +64,7 @@ function Hero({}: Props) {
         onClick={changeImage}
       >
         <h2 className="text-sm text-gray-500 uppercase tracking-[15px]">
-          tech enthusiast
+          {pageInfo?.role}
         </h2>
         <h1 className="text-5xl lg:text-6xl font-semibold px-10">
           <span className="mr-3">{text}</span>

@@ -1,9 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-type Props = {};
+import { PageInfo } from "../typings";
+import { urlFor } from "../sanity";
+type Props = {
+  pageInfo: PageInfo;
+};
 
-function About({}: Props) {
+function About({ pageInfo }: Props) {
   return (
     <motion.div
       initial={{
@@ -36,7 +40,7 @@ function About({}: Props) {
         viewport={{
           once: true,
         }}
-        src={"/about.jpeg"}
+        src={urlFor(pageInfo?.profilePic).url()}
         alt={"about"}
         className="-mb-20 mt-12 md:mb-0 flex-shrink-0 h-56 w-56 object-cover rounded-full md:rounded-lg md:w-64 md:h-96 xl:w-[400px] xl:h-[500px]"
       />
@@ -45,12 +49,7 @@ function About({}: Props) {
           Here is <span className="underline decoration-[#0adff7]">little</span>{" "}
           background
         </h4>
-        <p className="text-base">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-          consequuntur itaque quod facilis sunt corporis perferendis in eaque,
-          natus nostrum totam, modi blanditiis laudantium eligendi. Rem
-          obcaecati temporibus accusamus accusantium.
-        </p>
+        <p className="text-base">{pageInfo?.backgroundInformation}</p>
       </div>
     </motion.div>
   );
