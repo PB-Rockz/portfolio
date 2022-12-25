@@ -68,15 +68,19 @@ function Header({ socials }: Props) {
           duration: 1.5,
         }}
       >
-        <SocialIcon
-          className="cursor-pointer"
-          network="email"
-          fgColor="gray"
-          bgColor="transparent"
-        />
-        <p className="uppercase hidden md:inline-flex text-sm text-gray-400">
-          get in touch
-        </p>
+        <Link href={"#contact"} passHref legacyBehavior>
+          <SocialIcon
+            className="cursor-pointer"
+            network="email"
+            fgColor="gray"
+            bgColor="transparent"
+          />
+        </Link>
+        <Link href={"#contact"} passHref legacyBehavior>
+          <p className="uppercase hidden md:inline-flex text-sm text-gray-400">
+            get in touch
+          </p>
+        </Link>
       </motion.div>
     </header>
   );
